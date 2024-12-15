@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Book - Purchase Form</title>
+    <link rel="stylesheet" href="css/bulma-no-dark-mode.min.css" />
+    <link rel="stylesheet" href="css/custom-bulma.css" />
+    <link rel="icon" type="image/x-icon" href="src/favicon.ico" />
+    <style>
+      .payment-option {
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .payment-option:hover {
+        border-color: #00d1b2; /* Bulma primary color */
+      }
+
+      .payment-option.is-selected {
+        border-color: #3273dc; /* Bulma info color */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar is-spaced is-fixed-top">
+      <div class="container">
+        <div class="navbar-brand">
+          <div class="navbar-item">
+            <img src="src/logo.png" alt="BookStore Logo" class="navbar-logo" />
+            <strong class="has-text-info">LitStore</strong>
+          </div>
+          <a role="button" class="navbar-burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item has-text-link is-size-5" href="#books"
+              >Our Books</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Breadcrumb Section -->
+    <section class="section mt-6">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+          <ul>
+            <li><a class="has-text-info" href="index.html">Home</a></li>
+            <li class="is-active">
+              <a class="has-text-info" href="#" aria-current="page"
+                >Book Detail</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Book Detail Section -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="columns">
+              <div class="column is-4">
+                <figure class="image is-3by4">
+                  <img src="src/book1.jpg" alt="Book Cover" />
+                </figure>
+              </div>
+              <div class="column is-8">
+                <h1 class="title has-text-info">The Power of Jalur Langit</h1>
+                <p class="subtitle">
+                  by <span class="has-text-link">Redaksi Kawan Pustaka</span>
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aenean efficitur sit amet massa fringilla egestas. Nullam
+                  condimentum luctus turpis. Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit. Aenean efficitur sit amet massa
+                  fringilla egestas. Nullam condimentum luctus turpis. Lorem
+                  ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                  efficitur sit amet massa fringilla egestas. Nullam condimentum
+                  luctus turpis. Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit. Aenean efficitur sit amet massa fringilla
+                  egestas. Nullam condimentum luctus turpis.
+                </p>
+                <p><strong>Price:</strong> Rp. 20.000</p>
+                <p><strong>Available:</strong> In Stock</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Purchase Form Section -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <h2 class="title">Purchase Form</h2>
+            <form action="/purchase" method="POST">
+              <div class="field">
+                <label class="label">Full Name</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    name="full_name"
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Phone Number</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Address</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    name="address"
+                    placeholder="Enter your address"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Quantity</label>
+                <div class="control is-flex is-align-items-center">
+                  <button class="button is-light" type="button" id="decrement">
+                    -
+                  </button>
+                  <input
+                    class="input mx-2 has-text-centered"
+                    type="number"
+                    name="quantity"
+                    id="quantity"
+                    value="1"
+                    min="1"
+                    max="10"
+                    readonly
+                  />
+                  <button class="button is-light" type="button" id="increment">
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <button
+                    class="button is-primary"
+                    type="button"
+                    id="buyButton"
+                  >
+                    Choose Payment Method
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Choose Payment Method</p>
+          <button class="delete" aria-label="close" id="closeModal"></button>
+        </header>
+        <section class="modal-card-body">
+          <div class="content">
+            <div class="field">
+              <div class="control">
+                <div class="card payment-option" data-method="credit_card">
+                  <div class="card-content is-flex is-align-items-center">
+                    <figure class="image is-48x48 mr-4">
+                      <img src="src/bca.png" alt="Credit Card Logo" />
+                    </figure>
+                    <p class="title is-5">Transfer Bank BCA</p>
+                  </div>
+                </div>
+                <div class="card payment-option mt-3" data-method="paypal">
+                  <div class="card-content is-flex is-align-items-center">
+                    <figure class="image is-48x48 mr-4">
+                      <img src="src/paypal-logo.png" alt="PayPal Logo" />
+                    </figure>
+                    <p class="title is-5">Transfer Bank BTN</p>
+                  </div>
+                </div>
+                <div
+                  class="card payment-option mt-3"
+                  data-method="bank_transfer"
+                >
+                  <div class="card-content is-flex is-align-items-center">
+                    <figure class="image is-48x48 mr-4">
+                      <img
+                        src="src/bank-transfer-logo.png"
+                        alt="Bank Transfer Logo"
+                      />
+                    </figure>
+                    <p class="title is-5">Transfer Bank Mandiri</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-light" id="closeModalFooter">Close</button>
+          <button class="button is-primary" id="confirmPayment">Confirm</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer has-background-info has-text-white">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-4">
+            <figure class="image is-128x128">
+              <img src="src/logo.png" alt="LitStore Logo" />
+            </figure>
+            <p>
+              <strong>LitStore</strong> is your one-stop shop for all your book
+              needs. Explore, discover, and fall in love with reading.
+            </p>
+          </div>
+          <div class="column is-4"></div>
+          <div class="column is-4">
+            <h4 class="title is-5">Contact Us</h4>
+            <p>Email: support@litstore.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Book St, Bibliophile City</p>
+          </div>
+        </div>
+        <div class="content has-text-centered">
+          <p>&copy; 2024 LitStore. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("increment")
+        .addEventListener("click", function () {
+          const quantity = document.getElementById("quantity");
+          if (parseInt(quantity.value) < 10) {
+            quantity.value = parseInt(quantity.value) + 1;
+          }
+        });
+
+      document
+        .getElementById("decrement")
+        .addEventListener("click", function () {
+          const quantity = document.getElementById("quantity");
+          if (parseInt(quantity.value) > 1) {
+            quantity.value = parseInt(quantity.value) - 1;
+          }
+        });
+
+      const buyButton = document.getElementById("buyButton");
+      const paymentModal = document.getElementById("paymentModal");
+      const closeModalButtons = [
+        document.getElementById("closeModal"),
+        document.getElementById("closeModalFooter"),
+      ];
+
+      buyButton.addEventListener("click", function () {
+        paymentModal.classList.add("is-active");
+      });
+
+      closeModalButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          paymentModal.classList.remove("is-active");
+        });
+      });
+
+      const paymentOptions = document.querySelectorAll(".payment-option");
+      let selectedMethod = null;
+
+      paymentOptions.forEach((option) => {
+        option.addEventListener("click", function () {
+          paymentOptions.forEach((opt) => opt.classList.remove("is-selected"));
+          option.classList.add("is-selected");
+          selectedMethod = option.dataset.method;
+        });
+      });
+
+      document
+        .getElementById("confirmPayment")
+        .addEventListener("click", function () {
+          if (selectedMethod) {
+            alert("You selected: " + selectedMethod);
+            paymentModal.classList.remove("is-active");
+          } else {
+            alert("Please select a payment method.");
+          }
+        });
+    </script>
+  </body>
+</html>
