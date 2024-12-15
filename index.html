@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LitStore - Discover Your Next Favorite Book</title>
+    <link rel="stylesheet" href="css/bulma-no-dark-mode.min.css" />
+    <link rel="stylesheet" href="css/custom-bulma.css" />
+    <link rel="icon" type="image/x-icon" href="src/favicon.ico" />
+    <style>
+      .card {
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .card a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+      }
+      .navbar-logo {
+        max-height: 4rem;
+      }
+      .navbar-item strong {
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar is-spaced is-fixed-top">
+      <div class="container">
+        <div class="navbar-brand">
+          <div class="navbar-item">
+            <img src="src/logo.png" alt="BookStore Logo" class="navbar-logo" />
+            <strong class="has-text-info">LitStore</strong>
+          </div>
+          <a role="button" class="navbar-burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item has-text-link is-size-5" href="#books"
+              >Our Books</a
+            >
+            <!-- <a class="navbar-item button is-light" href="#">Login</a> -->
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero is-medium is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-6">
+              <h1 class="title">
+                <span class="has-text-success">Discover</span> Your Next
+                Favorite Book
+              </h1>
+              <p class="subtitle">
+                Explore thousands of books across genres and categories. Find
+                your perfect read today!
+              </p>
+              <a href="#books" class="button is-primary is-large">Shop Now</a>
+            </div>
+            <div class="column is-6 is-hidden-mobile">
+              <figure class="image is-4by5">
+                <img src="src/illustration.png" alt="Bookstore Illustration" />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Books Section -->
+    <section class="section" id="books">
+      <div class="container">
+        <h2 class="title has-text-centered has-text-info">Our Books</h2>
+        <div class="columns is-multiline">
+          <div class="column is-one-quarter">
+            <a href="book-detail.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-2by3">
+                    <img src="src/book1.jpg" alt="Book" />
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <h3 class="title is-6">The Power of Jalur Langit</h3>
+                  <p class="subtitle is-7">John Doe</p>
+                  <p class="has-text-grey-light is-size-7">
+                    <del>Rp.20.000</del>
+                    <span class="has-text-success is-size-6"> Rp.15.000</span>
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer has-background-info has-text-white">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-4">
+            <figure class="image is-128x128">
+              <img src="src/logo.png" alt="LitStore Logo" />
+            </figure>
+            <p>
+              <strong>LitStore</strong> is your one-stop shop for all your book
+              needs. Explore, discover, and fall in love with reading.
+            </p>
+          </div>
+          <div class="column is-4"></div>
+          <div class="column is-4">
+            <h4 class="title is-5">Contact Us</h4>
+            <p>Email: support@litstore.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Book St, Bibliophile City</p>
+          </div>
+        </div>
+        <div class="content has-text-centered">
+          <p>&copy; 2024 LitStore. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const navbarBurgers = Array.prototype.slice.call(
+          document.querySelectorAll(".navbar-burger"),
+          0
+        );
+        navbarBurgers.forEach((el) => {
+          el.addEventListener("click", () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle("is-active");
+            $target.classList.toggle("is-active");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
